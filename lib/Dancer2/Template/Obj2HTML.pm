@@ -37,14 +37,25 @@ sub BUILD {
 sub render {
   my ($self, $content, $tokens) = @_;
 
+  my $was_template = 0;
   if ($tokens->{content}) {
-    HTML::Obj2HTML::set_snippet("content", [ raw => $tokens->{content} ]);
+    $was_template = 1;
+    if (!ref $tokens->{content}) {
+      HTML::Obj2HTML::set_snippet("content", [ raw => $tokens->{content} ]);
+    } elsif (ref $tokens->{content} eq "ARRAY") {
+      HTML::Obj2HTML::set_snippet("content", $tokens->{content} );
+    }
+    delete($tokens->{content});
   }
 
   if (ref $content eq "ARRAY") {
-    return HTML::Obj2HTML::gen($content);
+    return HTML::Obj2HTML::gen($content, $tokens);
   } elsif (!ref $content) {
-    return HTML::Obj2HTML::gen(HTML::Obj2HTML::fetch($self->{settings}->{appdir} . $self->template_loc . "/" . $content . ".po"));
+    if ($was_template) {
+      return HTML::Obj2HTML::gen(HTML::Obj2HTML::fetch($self->{settings}->{appdir} . $self->template_loc . "/" . $content . ".po", $tokens));
+    } else {
+      return HTML::Obj2HTML::gen(HTML::Obj2HTML::fetch($self->{settings}->{appdir} . $self->page_loc . "/" . $content . ".po", $tokens));
+    }
   }
 }
 
