@@ -58,3 +58,20 @@ sub layout_pathname {
 }
 
 1;
+__END__
+
+=pod
+
+=head1 NAME
+
+Dancer2::Template::Obj2HTML - Temnplating system based on HTML::Obj2HTML
+
+=head1 SYNOPSYS
+
+=head1 AUTHOR
+
+Pero Moretti
+
+=head1 LICENSE
+
+=end
