@@ -24,12 +24,17 @@ has template_loc => (
     default => sub {'dofiles/templates'},
 );
 
+has extension => (
+    is      => 'rw',
+    default => sub {'.view'}
+);
+
 sub BUILD {
   my $self     = shift;
   my $settings = $self->config;
 
   $settings->{$_} and $self->$_( $settings->{$_} )
-    for qw/ page_loc component_loc template_loc /;
+    for qw/ page_loc component_loc template_loc extension /;
 
   HTML::Obj2HTML::import(components => $self->component_loc);
 }
@@ -52,9 +57,9 @@ sub render {
     return HTML::Obj2HTML::gen($content, $tokens);
   } elsif (!ref $content) {
     if ($was_template) {
-      return HTML::Obj2HTML::gen(HTML::Obj2HTML::fetch($self->{settings}->{appdir} . $self->template_loc . "/" . $content . ".po", $tokens));
+      return HTML::Obj2HTML::gen(HTML::Obj2HTML::fetch($self->{settings}->{appdir} . $self->template_loc . "/" . $content . $self->extension, $tokens));
     } else {
-      return HTML::Obj2HTML::gen(HTML::Obj2HTML::fetch($self->{settings}->{appdir} . $self->page_loc . "/" . $content . ".po", $tokens));
+      return HTML::Obj2HTML::gen(HTML::Obj2HTML::fetch($self->{settings}->{appdir} . $self->page_loc . "/" . $content . $self->extension, $tokens));
     }
   }
 }
