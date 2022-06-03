@@ -1,5 +1,5 @@
 package Dancer2::Template::Obj2HTML;
-$Dancer2::Template::Obj2HTML::VERSION = '0.11';
+$Dancer2::Template::Obj2HTML::VERSION = 'v0.1.1';
 
 use strict;
 use warnings;
@@ -123,5 +123,3 @@ This software is copyright (c) 2022 by Pero Moretti.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
-=end
