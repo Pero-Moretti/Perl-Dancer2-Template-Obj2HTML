@@ -1,5 +1,5 @@
 package Dancer2::Template::Obj2HTML;
-$Dancer2::Template::Obj2HTML::VERSION = 'v0.1.1';
+$Dancer2::Template::Obj2HTML::VERSION = '0.11';
 
 use strict;
 use warnings;
