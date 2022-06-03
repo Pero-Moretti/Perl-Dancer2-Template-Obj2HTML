@@ -1,5 +1,5 @@
 package Dancer2::Template::Obj2HTML;
-$Dancer2::Template::Obj2HTML::VERSION = '0.1';
+$Dancer2::Template::Obj2HTML::VERSION = '0.11';
 
 use strict;
 use warnings;
@@ -80,7 +80,7 @@ __END__
 
 =head1 NAME
 
-Dancer2::Template::Obj2HTML - Temnplating system based on HTML::Obj2HTML
+Dancer2::Template::Obj2HTML - Templating system based on HTML::Obj2HTML
 
 =head1 SYNOPSYS
 
