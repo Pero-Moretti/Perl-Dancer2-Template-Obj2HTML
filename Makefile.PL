@@ -12,13 +12,12 @@ WriteMakefile(
   PREREQ_PM        => {
     'strict'   => 0,
     'warnings' => 0,
-    'Dancer'   => 0,
+    'Dancer2'   => 0,
     'Moo'      => 0,
     'JSON'     => 0,
     'HTML::Obj2HTML' => 0
   },
   TEST_REQUIRES => {
-    'Dancer2' => 0,
     'File::Basename' => 0,
     'Path::Tiny' => 0,
     'FindBin' => 0,
